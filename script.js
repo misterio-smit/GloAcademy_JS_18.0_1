@@ -20,7 +20,7 @@ let period = 6;
       money = prompt('Ваш месячный доход?');
    }
   while(!isNumber(money));
-     money = prompt('Ваш месячный доход?');
+     //money = prompt('Ваш месячный доход?');
   
 };
 start();
