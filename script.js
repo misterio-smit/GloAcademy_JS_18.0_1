@@ -6,7 +6,6 @@ let isNumber = function(n){
 
 
 
-
 let money;
 let mission = 250000;
 let income = 'калым на работе'; 
@@ -20,11 +19,9 @@ let period = 6;
       money = prompt('Ваш месячный доход?');
    }
   while(!isNumber(money));
-     //money = prompt('Ваш месячный доход?');
-  
 };
-start();
 
+start();
 
 
 let showTypeOf = function(data){
@@ -35,11 +32,7 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
-// let expenses1 = prompt('Введите обязательную статью расходов?'),
-//     expenses1Amount = +prompt('Во сколько это обойдется?', 1700),
-//     expenses2 = prompt ('Введите обязательную статью расходов?'),
-//     expenses2Amount = +prompt ('Во сколько это обойдется?', 2230);
-   
+
 let expenses = [];
 
 //Функция возвращает сумму обязательных расходов 
@@ -69,8 +62,6 @@ function getAccumulatedMonth(){
   let accumulatedMonth = money - expensesAmount;
 return accumulatedMonth;
 }
-
-
 
 
 console.log(addExpenses.toLowerCase().split(', '));
