@@ -75,32 +75,25 @@ let appData = {
     },
 
     getStatusIncome:function(){
-        let budgetDay = Math.floor(appData.getBudget() / 30);
-        console.log('Бюджет на день: ' + budgetDay);
+        appData.budgetDay = Math.floor(appData.getBudget() / 30);
+      
 
-        if (budgetDay >= 1200) {
+        if (appData.budgetDay >= 1200) {
           return('У вас высокий уровень дохода');
-        }else if(budgetDay >= 600 && budgetDay < 1200){
+        }else if(appData.budgetDay >= 600 && appData.budgetDay < 1200){
             return('У вас средний уровень дохода');
-        }else if  (budgetDay < 600 && budgetDay > 0){
+        }else if  (appData.budgetDay < 600 && appData.budgetDay > 0){
             return('К сожалению у вас уровень дохода ниже среднего');
-        }else if (budgetDay <= 0){
+        }else if (appData.budgetDay <= 0){
             return('Что то пошло не так');
         }
     },
-
-    
-
 
 };
 
 appData.asking();
 
-appData.expensesAmount = appData.butget;
-
 appData.getExpensesMonth();
-
-console.log('Сумма обязательных расходов ' + appData.expensesMonth);
 
 appData.getBudget();
 
@@ -108,10 +101,13 @@ appData.getTargetMonth();
 
 appData.getStatusIncome();
 
+console.log('Сумма обязательных расходов ' + appData.expensesMonth);
+
+console.log(appData.getStatusIncome());
 
 
 
 for (let key in appData) {
-  let item = appData[key];
-  console.log('"Наша программа включает в себя данные: " ' + item);
+  
+  console.log('"Наша программа включает в себя данные: " ' + key + ' ' + appData[key]);
 }
