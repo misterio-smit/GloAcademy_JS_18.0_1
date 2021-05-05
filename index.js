@@ -22,7 +22,7 @@ let buttonStart = document.getElementById('start'),
     expensesItems = document.querySelectorAll('.expenses-items'),
     additionalExpenses = document.querySelectorAll('.additional_expenses'),
     periodSelect = document.querySelector('.period-select'),
-    periodAmount = document.querySelector('.title period-amount'),
+    periodAmount = document.querySelector('.period-amount'),
     additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     targetAmount = document.querySelector('.target-amount');
 
@@ -55,7 +55,6 @@ let appData = {
     appData.getExpensesMonth();
     appData.getAddExpenses();
     appData.getAddIncome();
-    appData.rangeSlider();
     appData.getBudget();
     appData.showResult();
     
@@ -73,6 +72,9 @@ let appData = {
       targetMonthValue.value = appData.getTargetMonth();
       incomePeriodValue.value = appData.calcPeriod();
       
+      periodSelect.addEventListener('input', () => {
+      incomePeriodValue.value = appData.calcPeriod();
+      });
   },
 
 
@@ -141,14 +143,7 @@ let appData = {
       });
   },
 
-  rangeSlider: function(){
-      periodSelect = document.querySelector('.period-select'); 
-      //   periodAmount = document.querySelector('.title period-amount');
-       periodAmount = +periodSelect.value;
-      console.log(periodAmount);
-    
-    
-  },
+  
 
     //Функция возвращает сумму обязательных расходов 
   getExpensesMonth: function(){
@@ -206,5 +201,7 @@ buttonExpensesPlus.addEventListener('click', appData.addExpensesBlock);
 
 buttonIncomePlus.addEventListener('click', appData.addIncomeBlock);
 
-periodSelect.addEventListener('input', appData.rangeSlider);
+periodSelect.addEventListener('input', () => {
+periodAmount.innerText = periodSelect.value;
+});
 
