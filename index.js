@@ -16,7 +16,6 @@ let buttonStart = document.getElementById('start'),
     incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
     targetMonthValue = document.getElementsByClassName('target_month-value')[0],
     salaryAmount = document.querySelector('.salary-amount'),
-    //incomeTitle = document.querySelector('.income-title'),
     incomeItems = document.querySelectorAll('.income-items'),
     expensesTitle = document.querySelectorAll('.expenses-title'),
     expensesItems = document.querySelectorAll('.expenses-items'),
@@ -73,7 +72,7 @@ let appData = {
       buttonStart.style.display = 'none';
       buttonCancel.style.display = 'block';
 
-      appData.butget = +salaryAmount.value;
+      this.butget = +salaryAmount.value;
       
       this.getExpenses();
       this.getIncome();
@@ -149,8 +148,8 @@ let appData = {
     });
 
 
-    for(let key in appData.income){
-      appData.incomeMonth += +appData.income[key];
+    for(let key in this.income){
+      this.incomeMonth += +this.income[key];
       
     }
   },
@@ -177,22 +176,22 @@ let appData = {
 
     //Функция возвращает сумму обязательных расходов 
   getExpensesMonth: function(){
-      for (let key in appData.expenses) {
-      appData.expensesMonth += +appData.expenses[key];
+      for (let key in this.expenses) {
+      this.expensesMonth += +this.expenses[key];
       }
       
   },
 
     //Функция возвращает  накопления за месяц. Доход минус расходы
   getBudget: function(){
-      appData.budgetMonth = appData.butget + appData.incomeMonth - appData.expensesMonth;
-      appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+      appData.budgetMonth = this.butget + this.incomeMonth - this.expensesMonth;
+      appData.budgetDay = Math.floor(this.budgetMonth / 30);
    
   },
 
     //Функция возвращает количество месяцев для достижения цели
   getTargetMonth: function(){ 
-      return Math.ceil(targetAmount.value / appData.budgetMonth);
+      return Math.ceil(targetAmount.value / this.budgetMonth);
       
   },
 
