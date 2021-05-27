@@ -10,21 +10,25 @@
     }
     createElem (){
   let elem;
-  if (this.selector.substr.contain(0, 1) === '.'){
+  if (this.selector.substr(0, 1) === '.'){
+    
     elem = document.createElement('div');
-    elem.classList.add(this.selector.slise(1));
-    document.body.append(elem);
+    elem.classList.add(this.selector.slice(1));
+    
   }else if(this.selector.substr(0, 1) === '#'){
-    elem = document.createElement('id');
-    elem.classList.add(this.selector.slise(1));
-    document.body.append(elem);
+    elem = document.createElement('p');
+    elem.setAttribute('id',this.selector.slice(1));
+    
 
   }
-  elem.style.cssText =`height:${this.height}px; width: ${this.width}px; bg: ${this.bg}; font-size: ${this.fontSize}px`;
- }
+  elem.style.cssText =`height:${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px`;
+
+   document.body.append(elem);
+  
+   }
   
  }
  
 
- let newElement = new DomElement('.block', 120, 120, 'white', 20); 
-console.log(newElement);
+let newElement = new DomElement('.block', 120, 120, 'grey', 20).createElem(); 
+let newElement2 = new DomElement('#clock', 120, 120, 'blue', 20).createElem(); 
